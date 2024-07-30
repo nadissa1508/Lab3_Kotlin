@@ -45,6 +45,16 @@ class IceCream ( name: String, price: Double) : Food(name, price), Dessert {
     }
 } 
 
+class Dona (name: String, price: Double) : Food(name, price), Dessert {
+    override fun cook(): String{
+        return "Hacer la masa y freir en abundante aceite"
+    }
+    
+    override fun eat(): String{
+        return "Decorar con frosting blanco y servir"
+    }
+} 
+
 class Juice (name: String, price: Double) : Drink(name, price){
     
     override fun cook(): String{
@@ -56,24 +66,46 @@ class Juice (name: String, price: Double) : Drink(name, price){
     }
 } 
 
+class Limonada (name: String, price: Double) : Drink(name, price){
+    
+    override fun cook(): String{
+        return "Mezclar agua con azucar, exprimir 2 limones frescos y agregar hielo"
+    }
+    
+    override fun pour(): String{
+        return "Verter con cuidado dentro de un vaso y agregar una rodaja de limón"
+    }
+}
+
 fun main() {
+    
+    println("\nRestaurante el Rincón típico")
     // Instancias de diferentes alimentos
-    val burger = Burger("Hamburguesa Clásica", 5.99)
-    val pizza = Pizza("Pizza Margarita", 8.99)
-    val iceCream = IceCream("Helado de Vainilla", 3.49)
-    val juice = Juice("Jugo de Naranja", 2.99)
+    val burger = Burger("\nHamburguesa Clásica", 50.00)
+    val pizza = Pizza("Pizza Margarita", 35.50)
+    val iceCream = IceCream("Helado de Vainilla", 15.50)
+    val dona = Dona("Dona con frosting", 10.00)
+    val juice = Juice("Jugo de Naranja", 15.50)
+    val limonada = Limonada("Limonada de fresa", 25.75)
 
     // Llamar a la función cook() para cada alimento
-    println("Cocinando Burger: ${burger.cook()}")
+    println("\nCocinando Burger: ${burger.cook()}")
     println("Cocinando Pizza: ${pizza.cook()}")
     println("Cocinando IceCream: ${iceCream.cook()}")
+    println("Cocinando Dona: ${dona.cook()}")
     println("Cocinando Juice: ${juice.cook()}")
+    println("Cocinando Limonada: ${limonada.cook()}")
 
-    // Llamar a la función eat() para IceCream
-    println("Comiendo IceCream: ${iceCream.eat()}")
+    // Llamar a la función eat() 
+    println("\nComiendo IceCream: ${iceCream.eat()}")
+    println("Comiendo Dona: ${dona.eat()}")
 
+    // Llamar a la función pour() 
+    println("\nVerter Jugo: ${juice.pour()}")
+    println("Verter Limonada: ${limonada.pour()}")
+    
     // Calcular y mostrar el precio con descuento de la hamburguesa
-    val discount = 0.10
-    println("Precio original de Burger: ${burger.price}")
+    val discount = 0.20
+    println("\nPrecio original de Burger: ${burger.price}")
     println("Precio con descuento de Burger: ${burger.discountedPrice(discount)}")
 }
